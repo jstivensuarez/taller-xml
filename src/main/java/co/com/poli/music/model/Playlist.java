@@ -27,7 +27,7 @@ public class Playlist implements Serializable {
     private String name;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "playList", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "playlist", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Song> songs;
 
     public Playlist() {
@@ -66,6 +66,9 @@ public class Playlist implements Serializable {
         this.songs = songs;
     }
 
-
+    @Override
+    public String toString() {
+        return description + " " + name;
+    }
 
 }

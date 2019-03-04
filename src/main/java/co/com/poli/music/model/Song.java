@@ -29,7 +29,7 @@ public class Song implements Serializable {
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    private Playlist playList;
+    private Playlist playlist;
 
     public Song() {
     }
@@ -67,10 +67,15 @@ public class Song implements Serializable {
     }
 
     public Playlist getPlaylists() {
-        return this.playList;
+        return this.playlist;
     }
 
     public void setPlaylists(Playlist playlists) {
-        this.playList = playlists;
+        this.playlist = playlists;
+    }
+    
+    @Override
+    public String toString() {
+        return artist + " " + title;
     }
 }
