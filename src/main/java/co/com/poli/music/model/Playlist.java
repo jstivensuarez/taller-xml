@@ -1,65 +1,71 @@
 package co.com.poli.music.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name="playlists")
+@Table(name = "playlists")
 public class Playlist implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    private static final long serialVersionUID = 1L;
 
-	@NotEmpty
-	private String description;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	@NotEmpty
-	private String name;
+    @NotEmpty
+    private String description;
 
-	@JsonBackReference
-	//bi-directional many-to-one association to Song
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Song song;
+    @NotEmpty
+    private String name;
 
-	public Playlist() {
-	}
+    @JsonManagedReference
+    @OneToMany(mappedBy = "playList", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Song> songs;
 
-	public Integer getId() {
-		return this.id;
-	}
+    public Playlist() {
+        songs = new ArrayList<>();
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return this.id;
+    }
 
-	public String getDescription() {
-		return this.description;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getDescription() {
+        return this.description;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public Song getSong() {
-		return this.song;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setSong(Song song) {
-		this.song = song;
-	}
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
+
 
 }

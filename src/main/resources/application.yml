@@ -5,7 +5,9 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     platform: postgres
-    
+    url: jdbc:postgresql://ec2-54-83-55-115.compute-1.amazonaws.com:5432/d7eumaibhi5cnu
+    username: amfcthlnpqrush 
+    password: 02c1699528e1915bdd258b40e36cd0b4f4e9f0705ac9dbd340d464bb555aec59
   jpa:
     hibernate.ddl-auto: update
     generate-ddl: true

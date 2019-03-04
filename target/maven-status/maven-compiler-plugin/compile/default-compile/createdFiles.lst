@@ -1,0 +1,12 @@
+co\com\poli\music\services\impl\IPlaylistServicesImpl.class
+co\com\poli\music\controller\PlaylistController.class
+co\com\poli\music\services\IPlaylistServices.class
+co\com\poli\music\controller\SongController.class
+co\com\poli\music\model\Song.class
+co\com\poli\music\AppMusicApplication.class
+co\com\poli\music\services\impl\ISongServicesImpl.class
+co\com\poli\music\dao\IPlaylistDAO.class
+co\com\poli\music\model\Playlist.class
+co\com\poli\music\util\Response.class
+co\com\poli\music\services\ISongServices.class
+co\com\poli\music\dao\ISongDAO.class

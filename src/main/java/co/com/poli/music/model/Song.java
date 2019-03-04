@@ -27,10 +27,9 @@ public class Song implements Serializable {
     @NotEmpty
     private String yearsong;
 
-    @JsonManagedReference
-    //bi-directional many-to-one association to Playlist
-    @OneToMany(mappedBy = "song", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Playlist> playlists;
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Playlist playList;
 
     public Song() {
     }
@@ -67,26 +66,11 @@ public class Song implements Serializable {
         this.yearsong = yearsong;
     }
 
-    public List<Playlist> getPlaylists() {
-        return this.playlists;
+    public Playlist getPlaylists() {
+        return this.playList;
     }
 
-    public void setPlaylists(List<Playlist> playlists) {
-        this.playlists = playlists;
+    public void setPlaylists(Playlist playlists) {
+        this.playList = playlists;
     }
-
-    public Playlist addPlaylist(Playlist playlist) {
-        getPlaylists().add(playlist);
-        playlist.setSong(this);
-
-        return playlist;
-    }
-
-    public Playlist removePlaylist(Playlist playlist) {
-        getPlaylists().remove(playlist);
-        playlist.setSong(null);
-
-        return playlist;
-    }
-
 }
